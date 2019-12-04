@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link th:src="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <title>登录首页页面</title>
+</head>
+<body>
+<div class="container" align="center">
+    <h2>Hello <span th:text="${msg}"></span></h2>
+    <form th:action="@{/logout}" method="post" id="logoutForm"></form>
+    <button type="submit" form="logoutForm">注销</button>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+###################Mysql####################
+datasource:
+  common:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.72.3:3306/common?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    testWhileIdle: true
+    validationQuery: select 1
+    timeBetweenEvictionRunsMillis: 1800000
+jpa:
+  hibernate:
+    naming:
+      physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    #更新或者创建数据表
+    ddl-auto: update
+  #在控制台打印SQL语句
+  show-sql: true
