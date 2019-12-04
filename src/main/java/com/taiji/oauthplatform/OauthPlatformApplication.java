@@ -11,7 +11,7 @@ public class OauthPlatformApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(OauthPlatformApplication.class, args);
-        System.out.println("认证授权服务启动成功！！！ ");
+        System.out.println("认证授权服务启动成功！！！");
     }
 
 }
