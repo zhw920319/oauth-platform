@@ -1,5 +1,8 @@
 package com.taiji.oauthplatform.config.ssoauth;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.taiji.oauthplatform.model.common.TbUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +17,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 /**
  * 自定义用户登陆逻辑配置
@@ -74,12 +78,38 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .authenticated()
                     .and()
                     .formLogin()//允许表单登陆
-                    .loginPage("/login")//自定义登陆页面
+                    .loginPage("/userLogin")//自定义登陆页面
                     .defaultSuccessUrl("/home")
                     .permitAll()//允许任何人访问登录url
-                        .and()
-                    .logout().permitAll();
+                     .and()
+                    .logout().permitAll()
+                    .and()
+                    .logout().permitAll()//开启自动配置的注销功能
+                    .deleteCookies("JSESSIONID")
+                    .invalidateHttpSession(true)
+                    .logoutUrl("/signout")
+//                    .logoutSuccessUrl("/login")
+                    .logoutSuccessHandler(logoutSuccessHandler())
+                    .and()
+                    .rememberMe();//记住我
 //                    .successForwardUrl("/user/loginSuccess");//自定义登陆成功页面地址
+    }
+
+    /**
+     * 登出处理
+     * @return
+     */
+    @Bean
+    public LogoutSuccessHandler logoutSuccessHandler() {
+        return (httpServletRequest, httpServletResponse, authentication) -> {
+            try {
+//                Object principal = authentication.getPrincipal();
+                System.out.println("USER : {} LOGOUT SUCCESS ! "+ authentication.getName());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            httpServletResponse.sendRedirect("userLogin");
+        };
     }
 
     /**

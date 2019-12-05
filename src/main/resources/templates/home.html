@@ -11,7 +11,8 @@
 <body>
 <div class="container" align="center">
     <h2>Hello <span th:text="${msg}"></span></h2>
-    <form th:action="@{/logout}" method="post" id="logoutForm"></form>
+<!--    <form th:action="@{/logout}" method="post" id="logoutForm"></form>-->
+    <form th:action="@{/signout}" method="post" id="logoutForm"></form>
     <button type="submit" form="logoutForm">注销</button>
 </div>
 </body>

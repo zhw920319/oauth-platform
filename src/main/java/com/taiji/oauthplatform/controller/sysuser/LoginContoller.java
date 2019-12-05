@@ -30,7 +30,7 @@ public class LoginContoller {
         return "home";
     }
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/userLogin")
     public String login() {
         return "login";
     }
