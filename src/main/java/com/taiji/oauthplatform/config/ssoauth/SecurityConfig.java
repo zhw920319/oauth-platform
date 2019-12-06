@@ -82,16 +82,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/home")
                     .permitAll()//允许任何人访问登录url
                      .and()
-                    .logout().permitAll()
-                    .and()
-                    .logout().permitAll()//开启自动配置的注销功能
+                    .logout()
                     .deleteCookies("JSESSIONID")
-                    .invalidateHttpSession(true)
+//                    .invalidateHttpSession(true)
                     .logoutUrl("/signout")
 //                    .logoutSuccessUrl("/login")
-                    .logoutSuccessHandler(logoutSuccessHandler())
-                    .and()
-                    .rememberMe();//记住我
+                    .logoutSuccessHandler(logoutSuccessHandler());
+//                    .and()
+//                    .rememberMe();//记住我
 //                    .successForwardUrl("/user/loginSuccess");//自定义登陆成功页面地址
     }
 

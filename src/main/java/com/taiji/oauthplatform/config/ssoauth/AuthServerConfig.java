@@ -128,8 +128,9 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
         tokenServices.setSupportRefreshToken(true);//是否产生刷新令牌
         tokenServices.setClientDetailsService(clientDetailsService);//客户端信息服务
 //        tokenServices.setTokenEnhancer(endpoints.getTokenEnhancer());
-        tokenServices.setAccessTokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(1)); // 一天有效期
-        tokenServices.setRefreshTokenValiditySeconds(259200);//刷新令牌默认有效期3天
+//        tokenServices.setAccessTokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(1)); // 一天有效期
+        tokenServices.setAccessTokenValiditySeconds((int) TimeUnit.SECONDS.toSeconds(1)); // 一天有效期
+        tokenServices.setRefreshTokenValiditySeconds(1800);//刷新令牌默认有效期半个小时
         return tokenServices;
     }
 
