@@ -1,4 +1,6 @@
-springboot2.2.1 + spring-security-oauth2 2.3.8 + JDBC 实现权限管理 以oauth2.0协议实现认证权限管理  并可实现第三方认证
+springboot2.2.1 + spring-security-oauth2 2.3.8 + springdatajpa  实现权限管理 以oauth2.0协议实现认证权限管理  并可实现第三方认证
+
+API swagger
 
 数据库设计：
 用户角色权限表
